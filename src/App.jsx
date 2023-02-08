@@ -5,23 +5,29 @@ import Questions from './QuestionPage';
 
 function App() {
   const [startGame, setStartGame] = useState(false);
+  const [fetchedData, setFetchedData] = useState([]);
   const [data, setData] = useState([]);
   const url = 'https://opentdb.com/api.php?amount=50&category=14&difficulty=medium&type=multiple&encode=url3986';
   useEffect(()=>{
     fetch(url)
     .then(res=>res.json())
     .then(data=>{
-      const randomIndx = Math.floor(Math.random()*(data.results.length-5))
-      var selectedSlice = data.results.slice(randomIndx,randomIndx+5);
-      selectedSlice=  selectedSlice.map((ques)=>{
-        ques['options'] = shuffleArray([...ques.incorrect_answers, ques.correct_answer]);
-        return ques;
-      })
-      setData(selectedSlice)
+      setFetchedData(data)
     })
   },[])
 
+  function randomizeData(){
+    const randomIndx = Math.floor(Math.random()*(fetchedData.results.length-5))
+    var selectedSlice = fetchedData.results.slice(randomIndx,randomIndx+5);
+    selectedSlice=  selectedSlice.map((ques)=>{
+      ques['options'] = shuffleArray([...ques.incorrect_answers, ques.correct_answer]);
+      return ques;
+    })
+    setData(selectedSlice)
+  }
+
   function playGame(){
+    randomizeData()
     setStartGame(true)
   }
 

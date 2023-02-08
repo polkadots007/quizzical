@@ -89,17 +89,13 @@
   display: flex;
   flex-direction: column;
   width: 60rem;
-  height: 640px;
+  height: 630px;
   overflow-y: auto;
   padding: 2rem 4rem 1rem;
   align-self: center;
   max-width: 1400px;
 }
-@media (max-width: 900px) {
-  .questions {
-    padding: 2rem 2rem 1rem 2rem;
-  }
-}
+
 .qn-title {
   font-family: "Karla";
   font-style: normal;
@@ -190,4 +186,17 @@
   text-align: center;
 
   color: #293264;
+}
+
+@media (max-width: 900px) {
+  .questions {
+    padding: 2rem 2rem 1rem 2rem;
+  }
+}
+
+@media (min-height: 635px) {
+  .qn-options{
+    display: grid;
+    grid-template: auto auto / repeat(2, 1fr);
+  }
 }
