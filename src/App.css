@@ -201,7 +201,7 @@
   }
 }
 
-@media (min-height: 888px) {
+@media screen and (min-height: 800px) {
   .questions {
     height: 700px;
   }
