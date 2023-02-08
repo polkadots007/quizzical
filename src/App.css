@@ -207,9 +207,15 @@
   }
   .qn-options {
     display: flex;
-    flex-direction: column;
     justify-content: space-around;
     gap: 10px;
     align-content: center;
+  }
+}
+
+@media (min-height: 900px) {
+  .qn-options{
+    display: grid;
+    grid-template: auto auto / repeat(2, 1fr);
   }
 }
