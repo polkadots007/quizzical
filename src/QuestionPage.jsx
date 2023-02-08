@@ -70,7 +70,7 @@ export default function Questions(props){
             checkForMatch(decodeStr(item.correct_answer), selectedValues[index]) && ++scoreCount;
         })
         setScore(scoreCount)
-        scoreCount && setConfetti(true)
+        (scoreCount === 5) && setConfetti(true)
     }
 
     return (
